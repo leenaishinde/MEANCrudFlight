@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content white-text">
+        <div class="row">
+          <div class="col s5">
+        <form #flightForm="ngForm" (ngSubmit)="onSubmit(flightForm)">
+          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="flightService.selectedFlight._id">
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="text" name="flightname" #name="ngModel" [(ngModel)]="flightService.selectedFlight.flightname" placeholder="Enter flight" required>
+              <label>Flight :
+                <label class="red-text">*</label>
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="text" name="origin" #name="ngModel" [(ngModel)]="flightService.selectedFlight.origin" placeholder="Eg : Dubai">
+              <label>Origin :</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="text" name="destination" #name="ngModel" [(ngModel)]="flightService.selectedFlight.destination" placeholder="Enter destination">
+              <label>Destination :</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="text" name="flightnumber" #name="ngModel" [(ngModel)]="flightService.selectedFlight.flightnumber" placeholder="Enter flight number">
+              <label>Flight Number :</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button class="btn btn-custom right" type="button" (click)="resetForm(employeeForm)">Reset</button>
+              <button class="btn btn-custom right" type="submit" [disabled]="!flightForm.valid">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col s7">
+        <table class="responsive-table highlight">
+            <thead>
+              <tr>
+                <th>Flight</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tr *ngFor="let flt of flightService.flights">
+              <td>{{flt.flightname}}</td>
+              <td>{{flt.origin}}</td>
+              <td>{{flt.destination}}</td>
+              <td>
+                  <a class="action-btn" (click)="onEdit(flt)">
+                    <i class="material-icons">edit</i>
+                  </a>
+                  <a class="action-btn" (click)="onDelete(flt._id,flightForm)">
+                    <i class="material-icons">delete</i>
+                  </a>
+                </td>
+            </tr>
+          </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+</div>
